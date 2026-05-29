@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>days until SpaceX IPO</title>
+<meta name="description" content="A live-ish countdown to the SpaceX IPO. June 12, 2026.">
+<meta property="og:title" content="days until SpaceX IPO">
+<meta property="og:description" content="Countdown to the largest IPO in history. Polymarket-implied market cap, updated live.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://daysuntilipo.com/spacex/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<main>
+
+  <header class="hero">
+    <h1 class="counter" id="counter" aria-live="polite">
+      <span class="num" id="days">…</span><span class="label">days until</span>
+    </h1>
+    <h2 class="title">the <span class="spx">SpaceX</span> IPO</h2>
+    <p class="date">Friday, June 12, 2026 &middot; NASDAQ:&nbsp;<span class="ticker">SPCX</span></p>
+  </header>
+
+  <section class="printer">
+    <img src="../assets/musk-printer.gif"
+         alt="Cartoon Elon Musk cranking a money printer"
+         class="printer-gif"
+         onerror="this.style.display='none';document.getElementById('printer-fallback').style.display='block'">
+    <div id="printer-fallback" class="printer-fallback" hidden style="display:none">
+      <pre>
+   [drop musk-printer.gif into /assets/]
+   $$$ &gt; &gt; &gt; PRINT &gt; &gt; &gt; $$$
+      </pre>
+    </div>
+  </section>
+
+  <section class="prediction" id="prediction">
+    <p class="kicker">Polymarket-implied closing market cap</p>
+    <p class="cap" id="cap"><span class="loading">loading market…</span></p>
+    <p class="cap-sub" id="cap-sub">&nbsp;</p>
+
+    <div class="brackets" id="brackets" hidden>
+      <h3 class="brackets-title">trader consensus by bracket</h3>
+      <ul class="bracket-list" id="bracket-list"></ul>
+    </div>
+
+    <p class="cap-meta" id="cap-meta">&nbsp;</p>
+  </section>
+
+  <footer class="foot">
+    <p>
+      not affiliated with SpaceX. for entertainment. data via
+      <a href="https://polymarket.com/event/spacex-ipo-closing-market-cap" target="_blank" rel="noopener">polymarket</a>.
+    </p>
+  </footer>
+
+</main>
+
+<script src="./app.js"></script>
+</body>
+</html>
