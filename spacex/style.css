@@ -59,13 +59,6 @@ main {
 }
 @keyframes pop { 0%,100% { transform: scale(1) } 50% { transform: scale(1.04) } }
 
-.title {
-  margin: 10px 0 2px;
-  font-size: clamp(40px, 9vw, 104px);
-  letter-spacing: .01em;
-}
-.title .spx { color: var(--blue); }
-
 .date {
   margin: 0;
   font-size: clamp(16px, 3.2vw, 30px);
