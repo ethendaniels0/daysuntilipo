@@ -24,22 +24,14 @@
 
   const $ = (id) => document.getElementById(id);
   const $days = $('days');
-  const $label = $('label');
   const $cap = $('cap');
-  const $memeLine = $('meme-line');
   const $capMeta = $('cap-meta');
 
   // ---- countdown ----
   function renderCountdown() {
     const ms = IPO_AT - Date.now();
-    if (ms <= 0) {
-      $days.textContent = '0';
-      $label.textContent = "IT'S LIVE 🔔";
-      return;
-    }
-    const days = Math.ceil(ms / 86400000);
+    const days = ms <= 0 ? 0 : Math.ceil(ms / 86400000);
     $days.textContent = days.toLocaleString();
-    $label.textContent = days === 1 ? 'DAY' : 'DAYS';
   }
   renderCountdown();
   setInterval(renderCountdown, 60000);
@@ -95,27 +87,19 @@
   }
 
   function renderCap(cap) {
-    const stonks = cap >= IPO_TARGET_T;
     $cap.classList.remove('err');
     $cap.textContent = '$' + cap.toFixed(2) + 'T';
-    $memeLine.textContent = stonks ? 'STONKS  📈' : 'NOT STONKS  📉';
-    setStonks(stonks);
+    setStonks(cap >= IPO_TARGET_T); // swaps the stonks / not-stonks background
     lastFetchAt = Date.now();
     updateMeta();
-  }
-
-  function renderError() {
-    // never break the meme — keep the (default) stonks vibe, just say we're loading
-    if (lastFetchAt) return; // already have a real value; keep it
-    $memeLine.textContent = 'LOADING THE STONKS…  📈';
   }
 
   async function refresh() {
     try {
       renderCap(await fetchExpectedCap());
     } catch (e) {
+      // never break the meme — keep the default stonks background + last value
       console.error('polymarket fetch failed:', e);
-      renderError();
     }
   }
 
