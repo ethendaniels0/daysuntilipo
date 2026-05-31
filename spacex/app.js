@@ -7,6 +7,10 @@
   const POLYMARKET_URL = 'https://gamma-api.polymarket.com/events?slug=spacex-ipo-closing-market-cap';
   const REFRESH_MS = 5 * 60 * 1000;
 
+  // SpaceX's targeted IPO valuation (trillions USD). Implied cap above this
+  // => stonks background; below => not_stonks.
+  const IPO_TARGET_T = 1.75;
+
   // bracket label patterns (match Polymarket's full-sentence questions)
   // -> midpoint in trillions (USD)
   const BRACKETS = [
@@ -45,16 +49,11 @@
   const $cap = document.getElementById('cap');
   const $capSub = document.getElementById('cap-sub');
   const $capMeta = document.getElementById('cap-meta');
-  const $brackets = document.getElementById('brackets');
-  const $list = document.getElementById('bracket-list');
+  const SUBTITLE = 'probability-weighted closing market cap via polymarket';
 
   function fmtTrillions(n) {
     // n in trillions of USD -> "$2.31T"
     return '$' + n.toFixed(2) + 'T';
-  }
-
-  function fmtPct(p) {
-    return (p * 100).toFixed(1) + '%';
   }
 
   function parseOutcomePrices(raw) {
@@ -113,34 +112,14 @@
     return { expected, rows, probSum, noIpoProb };
   }
 
-  function renderMarket({ expected, rows, noIpoProb }) {
+  function renderMarket({ expected }) {
     $cap.textContent = '~' + fmtTrillions(expected);
-    $capSub.textContent = 'probability-weighted from ' + rows.length + ' brackets';
+    $capSub.textContent = SUBTITLE;
 
-    // top bracket by probability
-    const top = [...rows].sort((a, b) => b.yes - a.yes)[0];
+    const stonks = expected >= IPO_TARGET_T;
+    document.body.classList.toggle('stonks', stonks);
+    document.body.classList.toggle('not-stonks', !stonks);
 
-    $list.innerHTML = '';
-    for (const row of rows) {
-      const li = document.createElement('li');
-      if (row === top) li.classList.add('top');
-      li.innerHTML =
-        '<span class="rng">' + row.label + '</span>' +
-        '<span class="bar"><span style="width:' + Math.min(100, row.yes * 100) + '%"></span></span>' +
-        '<span class="pct">' + fmtPct(row.yes) + '</span>';
-      $list.appendChild(li);
-    }
-
-    if (noIpoProb > 0.005) {
-      const li = document.createElement('li');
-      li.innerHTML =
-        '<span class="rng">no IPO by ’27</span>' +
-        '<span class="bar"><span style="width:' + Math.min(100, noIpoProb * 100) + '%;background:linear-gradient(90deg,var(--red),#7a2030)"></span></span>' +
-        '<span class="pct">' + fmtPct(noIpoProb) + '</span>';
-      $list.appendChild(li);
-    }
-
-    $brackets.hidden = false;
     lastFetchAt = Date.now();
     updateMeta();
   }
