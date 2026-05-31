@@ -3,57 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>days until SpaceX IPO</title>
-<meta name="description" content="A live-ish countdown to the SpaceX IPO. June 12, 2026.">
-<meta property="og:title" content="days until SpaceX IPO">
-<meta property="og:description" content="Countdown to the largest IPO in history. Polymarket-implied market cap, updated live.">
+<title>DAYS UNTIL THE SPACEX IPO 🚀</title>
+<meta name="description" content="Countdown to the largest IPO in history. STONKS only go up. 🚀📈">
+<meta property="og:title" content="DAYS UNTIL THE SPACEX IPO 🚀">
+<meta property="og:description" content="Live-ish Polymarket-implied market cap. STONKS. 🚀📈💸">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://daysuntilipo.com/spacex/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="./style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css?v=3">
 </head>
-<body>
+<!-- default to STONKS so the meme background paints instantly, before the market even loads -->
+<body class="stonks">
 
 <main>
 
-  <header class="hero">
-    <h1 class="counter" id="counter" aria-live="polite">
-      <span class="num" id="days">…</span><span class="label">days until</span>
-    </h1>
-    <h2 class="title">the <span class="spx">SpaceX</span> IPO</h2>
-    <p class="date">Friday, June 12, 2026 &middot; NASDAQ:&nbsp;<span class="ticker">SPCX</span></p>
-  </header>
+  <p class="banner">🚀 &nbsp;DAYS UNTIL THE&nbsp; 🚀</p>
 
-  <section class="printer">
+  <h1 class="counter">
+    <span class="num" id="days" aria-live="polite">12</span>
+    <span class="label" id="label">DAYS</span>
+  </h1>
+
+  <h2 class="title">THE <span class="spx">SPACEX</span> IPO</h2>
+  <p class="date">JUNE 12, 2026 &nbsp;•&nbsp; $<span class="ticker">SPCX</span> GOES BRRR</p>
+
+  <div class="printer">
     <img src="../assets/musk-printer.gif"
          alt="Cartoon Elon Musk cranking a money printer"
          class="printer-gif"
-         onerror="this.style.display='none';document.getElementById('printer-fallback').style.display='block'">
-    <div id="printer-fallback" class="printer-fallback" hidden style="display:none">
-      <pre>
-   [drop musk-printer.gif into /assets/]
-   $$$ &gt; &gt; &gt; PRINT &gt; &gt; &gt; $$$
-      </pre>
-    </div>
-  </section>
+         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'printer-fallback',textContent:'🖨️💸💸💸 BRRRRRRR 💸💸💸🖨️'}))">
+  </div>
 
-  <section class="prediction" id="prediction">
-    <p class="cap" id="cap"><span class="loading">loading market…</span></p>
-    <p class="cap-sub" id="cap-sub">probability-weighted closing market cap via polymarket</p>
-
+  <section class="prediction">
+    <p class="kicker">POLYMARKET SAYS IT CLOSES AT</p>
+    <p class="cap" id="cap">$？？？T</p>
+    <p class="meme-line" id="meme-line">STONKS&nbsp; 📈</p>
+    <p class="cap-sub">probability-weighted closing market cap via polymarket</p>
     <p class="cap-meta" id="cap-meta">&nbsp;</p>
   </section>
 
   <footer class="foot">
-    <p>
-      not affiliated with SpaceX. for entertainment. data via
-      <a href="https://polymarket.com/event/spacex-ipo-closing-market-cap" target="_blank" rel="noopener">polymarket</a>.
-    </p>
+    not affiliated with SpaceX. for entertainment only. number go up.
+    data via <a href="https://polymarket.com/event/spacex-ipo-closing-market-cap" target="_blank" rel="noopener">polymarket</a>.
   </footer>
 
 </main>
 
-<script src="./app.js"></script>
+<script src="./app.js?v=3"></script>
 </body>
 </html>
