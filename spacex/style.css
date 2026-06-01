@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
 :root {
   --gold: #ffe11a;
   --green: #16ff7a;
   --red: #ff3b53;
   --blue: #4fc3ff;
-  --meme: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive, sans-serif;
+  --meme: "Comic Neue", "Comic Sans MS", "Comic Sans", cursive, sans-serif;
 }
 
 * { box-sizing: border-box; }
