@@ -34,6 +34,15 @@ body.not-stonks {
     url(../not_stonks.png);
 }
 
+@media (max-width: 640px) {
+  body {
+    background-position: center top, left top;
+    background-size: auto, min(430px, 100vw) auto;
+    background-repeat: no-repeat, repeat;
+    background-attachment: scroll;
+  }
+}
+
 /* every bit of text gets a fat black outline so it pops over the busy image */
 main {
   max-width: 960px;
